@@ -9,8 +9,11 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  Image,
+  Dimensions
 } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -20,38 +23,83 @@ const instructions = Platform.select({
 });
 
 export default class App extends Component<{}> {
+
   render() {
+
+    const dimensions = Dimensions.get('window');
+    const imageHeight = Math.round(dimensions.width * 9 / 16);
+    const imageWidth = dimensions.width - 20;
+
+    const image = 'https://camiloarguello.xyz/img/juliana.jpg';
+    const name = 'Hotel CA'
+    const stars = 4
+
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+        <View style={styles.hotelbox}>
+          <Image style={{height: imageHeight, width: imageWidth}} source={{ uri: image }} />
+
+          <View style={styles.info}>
+            <View style={styles.infoContainer}>
+              <Text style={styles.name}>{name}</Text>
+              <View style={styles.row}>
+                <Icon name="star-border" size={30} color='#900' />
+                <Icon name="star-border" size={30} color='#900' />
+                <Icon name="star-border" size={30} color='#900' />
+              </View>
+            </View>
+            <View style={styles.infoContainer}>
+              <Text style={styles.name}>{name}</Text>
+              <View style={styles.row}>
+                <Icon name="star-border" size={30} color='#900' />
+                <Icon name="star-border" size={30} color='#900' />
+                <Icon name="star-border" size={30} color='#900' />
+              </View>
+            </View>
+          </View>
+          
+        </View>
       </View>
     );
   }
 }
 
+{/* <View style={styles.info}>
+<Text style={styles.name}>{name}</Text>
+<Icon name="star-border" size={30} color='#900' />
+<Text>{stars}</Text>
+</View> */}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#EEE',
+    paddingTop: 50,
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
+  hotelbox: {
+    backgroundColor: '#FFF',
     margin: 10,
+    alignItems: 'center',
+    borderRadius:10
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  image:{
+    width: 200,
+    height: 200
   },
+  info:{
+    flexDirection: 'row',
+    backgroundColor:'green',
+    justifyContent: 'space-between',
+  },
+  name:{
+    fontSize: 20,
+    marginTop: 10
+  },
+  row:{
+    flexDirection: 'row'
+  },
+  infoContainer:{
+    flex:1,
+    alignItems: 'center'
+  }
 });
