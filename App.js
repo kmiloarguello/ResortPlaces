@@ -31,7 +31,7 @@ export default class App extends Component<{}> {
     const imageWidth = dimensions.width - 20;
 
     const image = 'https://camiloarguello.xyz/img/juliana.jpg';
-    const name = 'Hotel CA'
+    const name = 'Hotel Camilo Arguello'
     const stars = 4
 
     return (
@@ -40,15 +40,15 @@ export default class App extends Component<{}> {
           <Image style={{height: imageHeight, width: imageWidth}} source={{ uri: image }} />
 
           <View style={styles.info}>
-            <View style={styles.infoContainer}>
+            <View style={styles.infoContainerLeft}>
               <Text style={styles.name}>{name}</Text>
               <View style={styles.row}>
-                <Icon name="star-border" size={30} color='#900' />
-                <Icon name="star-border" size={30} color='#900' />
-                <Icon name="star-border" size={30} color='#900' />
+                <Icon name="star-border" size={30} color='#ffcc08' />
+                <Icon name="star-border" size={30} color='#ffcc08' />
+                <Icon name="star-border" size={30} color='#ffcc08' />
               </View>
             </View>
-            <View style={styles.infoContainer}>
+            <View style={styles.infoContainerRight}>
               <Text style={styles.perNight}>Precio por Noche</Text>
               <Text style={styles.price}>COP 135.000</Text>
             </View>
@@ -83,20 +83,24 @@ const styles = StyleSheet.create({
     height: 200
   },
   info:{
-    marginVertical: 10,
+    margin: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
   name:{
     color: 'black',
-    fontSize: 20
+    fontSize: 18
   },
   row:{
     flexDirection: 'row'
   },
-  infoContainer:{
+  infoContainerLeft:{
+    flex:2,
+    alignItems: 'flex-start'
+  },
+  infoContainerRight:{
     flex:1,
-    alignItems: 'center'
+    alignItems: 'flex-end'
   },
   perNight:{
     marginTop: 5
