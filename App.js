@@ -49,12 +49,8 @@ export default class App extends Component<{}> {
               </View>
             </View>
             <View style={styles.infoContainer}>
-              <Text style={styles.name}>{name}</Text>
-              <View style={styles.row}>
-                <Icon name="star-border" size={30} color='#900' />
-                <Icon name="star-border" size={30} color='#900' />
-                <Icon name="star-border" size={30} color='#900' />
-              </View>
+              <Text style={styles.perNight}>Precio por Noche</Text>
+              <Text style={styles.price}>COP 135.000</Text>
             </View>
           </View>
           
@@ -87,13 +83,13 @@ const styles = StyleSheet.create({
     height: 200
   },
   info:{
+    marginVertical: 10,
     flexDirection: 'row',
-    backgroundColor:'green',
     justifyContent: 'space-between',
   },
   name:{
-    fontSize: 20,
-    marginTop: 10
+    color: 'black',
+    fontSize: 20
   },
   row:{
     flexDirection: 'row'
@@ -101,5 +97,12 @@ const styles = StyleSheet.create({
   infoContainer:{
     flex:1,
     alignItems: 'center'
+  },
+  perNight:{
+    marginTop: 5
+  },
+  price:{
+    fontSize: 20,
+    color: '#ffcc08'
   }
 });
