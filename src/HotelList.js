@@ -12,6 +12,7 @@ export default class HotelList extends Component<{}> {
       <FlatList 
         data={this.props.hotel}
         renderItem={({item}) => <HotelBox hotel={item} />}
+        keyExtractor={(item,index) => index}
       />
     );
   }

@@ -26,9 +26,9 @@ export default class HotelBox extends Component<{}> {
             <View style={styles.infoContainerLeft}>
               <Text style={styles.name}>{name}</Text>
               <View style={styles.row}>
-                <Icon name="star-border" size={30} color='#ffcc08' />
-                <Icon name="star-border" size={30} color='#ffcc08' />
-                <Icon name="star-border" size={30} color='#ffcc08' />
+                {Array(stars).fill().map(
+                  (t,i) => <Icon key={i} name="star-border" size={30} color='#ffcc08' />
+                )}
               </View>
             </View>
             <View style={styles.infoContainerRight}>
