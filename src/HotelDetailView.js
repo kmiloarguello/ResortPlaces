@@ -7,15 +7,14 @@ import {
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import HotelList from './HotelList'
 import {request} from 'graphql-request'
-import HotelBox from './HotelBox'
+import HotelBoxDetail from './HotelBoxDetail'
 
 
 export default class HotelDetailView extends Component<{}> {
-
   render() {
     return (
       <View style={styles.container}>
-        <HotelBox hotel={this.props.hotel} /> 
+        <HotelBoxDetail hotel={this.props.hotel} /> 
       </View>
     );
   }

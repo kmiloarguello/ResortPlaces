@@ -19,8 +19,8 @@ export default class App extends Component<{}> {
     return (
       <Router>
         <Stack key="root">
-          <Scene key="home" component={HomeView}/>
-          <Scene key="hotelDetail" component={HotelDetailView} />
+          <Scene key="home" component={HomeView} title='Inicio' tabs={true}/>
+          <Scene key="hotelDetail" component={HotelDetailView} title='Detalle Hotel' />
         </Stack>
       </Router>
     );
@@ -31,6 +31,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#EEE',
-    paddingTop: 50,
   }
 });

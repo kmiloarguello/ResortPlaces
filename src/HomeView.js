@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  View
+  View,
+  Text,
+  TextInput
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import HotelList from './HotelList'
 //import { getallHotels }  from './src/api-client'
 import {request} from 'graphql-request'
+import { SearchBar } from 'react-native-elements'
 
 
 export default class HomeView extends Component<{}> {
@@ -17,6 +20,7 @@ export default class HomeView extends Component<{}> {
     }
   }
   componentDidMount(){
+    //console.disableYellowBox = true;
     const query = `
     
     {
@@ -38,10 +42,35 @@ export default class HomeView extends Component<{}> {
       })
 
   }
+  findHotelByName(text){
+    const query = `
+    
+    {
+        hotelByName(name: ${text}){
+            name
+            stars
+            image
+            price
+        }
+    }
+    
+    `
+   request('https://hotel-api-km.herokuapp.com/graphql',query)
+      .then( data => {
+        this.setState({
+          hotels: data.hotelByName
+        })
+      }) 
+  }
   render() {
     const hotel = this.state.hotels
     return (
       <View style={styles.container}>
+        <TextInput
+          style={{height: 50, borderColor:'#ccc', borderWidth: 1}}
+          onEndEditing={text => this.findHotelByName(text)}
+          placeholder='Buscar Hotel por nombre...'
+        />
         <HotelList hotel={hotel}/>
       </View>
     );
@@ -52,6 +81,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#EEE',
-    paddingTop: 50,
+  },
+  input:{
+    height: 40,
+    borderColor: 'gray',
+     borderWidth: 1
   }
 });
