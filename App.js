@@ -12,12 +12,44 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import HotelList from './src/HotelList'
+//import { getallHotels }  from './src/api-client'
+import {request} from 'graphql-request'
+
 
 export default class App extends Component<{}> {
+  constructor(){
+    super()
+    this.state = {
+      hotels : []
+    }
+  }
+  componentDidMount(){
+    const query = `
+    
+    {
+        allHotels{
+            name
+            stars
+            image
+            price
+        }
+    }
+    
+    `;
+
+    request('https://hotel-api-km.herokuapp.com/graphql',query)
+      .then( data => {
+        this.setState({
+          hotels: data.allHotels
+        })
+      })
+
+  }
   render() {
+    const hotel = this.state.hotels
     return (
       <View style={styles.container}>
-        <HotelList />
+        <HotelList hotel={hotel}/>
       </View>
     );
   }
