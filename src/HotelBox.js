@@ -8,8 +8,12 @@ import {
   TouchableOpacity
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { Actions }  from 'react-native-router-flux'
 
 export default class HotelBox extends Component<{}> {
+  handlePress(hotel) {
+    Actions.hotelDetail({hotel})
+  }
 
   render() {
 
@@ -22,7 +26,7 @@ export default class HotelBox extends Component<{}> {
     return (
         <View style={styles.hotelbox}>
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => this.handlePress(this.props.hotel)}>
             <Image style={{height: imageHeight, width: imageWidth}} source={{ uri: image }} />
           </TouchableOpacity>
           <View style={styles.info}>
