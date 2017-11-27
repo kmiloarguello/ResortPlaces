@@ -5,7 +5,6 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import HotelList from './HotelList'
-//import { getallHotels }  from './src/api-client'
 import {request} from 'graphql-request'
 
 
