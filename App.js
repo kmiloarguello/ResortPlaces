@@ -1,7 +1,5 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
+ * created by CAMILO ARGUELLO
  */
 
 import React, { Component } from 'react';
@@ -11,46 +9,20 @@ import {
   View
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import HotelList from './src/HotelList'
-//import { getallHotels }  from './src/api-client'
 import {request} from 'graphql-request'
-
+import {Stack,Scene,Router} from 'react-native-router-flux'
+import HomeView from './src/HomeView'
+import HotelDetailView from './src/HotelDetailView'
 
 export default class App extends Component<{}> {
-  constructor(){
-    super()
-    this.state = {
-      hotels : []
-    }
-  }
-  componentDidMount(){
-    const query = `
-    
-    {
-        allHotels{
-            name
-            stars
-            image
-            price
-        }
-    }
-    
-    `;
-
-    request('https://hotel-api-km.herokuapp.com/graphql',query)
-      .then( data => {
-        this.setState({
-          hotels: data.allHotels
-        })
-      })
-
-  }
   render() {
-    const hotel = this.state.hotels
     return (
-      <View style={styles.container}>
-        <HotelList hotel={hotel}/>
-      </View>
+      <Router>
+        <Stack key="root">
+          <Scene key="home" component={HomeView}/>
+          <Scene key="hotelDetail" component={HotelDetailView} />
+        </Stack>
+      </Router>
     );
   }
 }

@@ -4,7 +4,8 @@ import {
   Text,
   View,
   Image,
-  Dimensions
+  Dimensions,
+  TouchableOpacity
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -20,8 +21,10 @@ export default class HotelBox extends Component<{}> {
 
     return (
         <View style={styles.hotelbox}>
-          <Image style={{height: imageHeight, width: imageWidth}} source={{ uri: image }} />
 
+          <TouchableOpacity>
+            <Image style={{height: imageHeight, width: imageWidth}} source={{ uri: image }} />
+          </TouchableOpacity>
           <View style={styles.info}>
             <View style={styles.infoContainerLeft}>
               <Text style={styles.name}>{name}</Text>
